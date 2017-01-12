@@ -54,7 +54,7 @@ body
         <div id="login_form">
              
             <div class="new"><span>Log In</span></div><br> 
-           <form name="f1" method="post" action="Controller" id="f1">
+           <form name="f1" method="post" action="SimpleServlet" id="f1">
            <input type="hidden" name="operation" value="login"/>  
                      
                         User Name : 
