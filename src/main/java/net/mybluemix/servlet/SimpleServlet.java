@@ -13,15 +13,47 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/SimpleServlet")
 public class SimpleServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        response.getWriter().print(" World!");
-    }
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,NumberFormatException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html");  
+		String operation = request.getParameter("operation");
+		PrintWriter out = response.getWriter();
+		RequestDispatcher rd;
 
+		 if(operation.equals("login")){
+			
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+		
+			
+			
+			
+			
+			if (username.equals("Keerthika") && password.equals("1234")) {
+				
+				System.out.println("Welcome" +username);
+				
+				rd=request.getRequestDispatcher("LoginSuccess.html");
+				rd.forward(request, response);
+				
+				
+			} else if (username.equals("Jayapradha") && password.equals("5678")) {
+				
+				System.out.println("Welcome" +username);
+				rd=request.getRequestDispatcher("LoginSuccess.html");
+				rd.forward(request, response);
+				
+		}
+			else{
+				rd=request.getRequestDispatcher("LoginFailed.html");
+				rd.forward(request, response);
+			}
+		 }
+	}
+}
 }
